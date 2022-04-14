@@ -1,9 +1,14 @@
 # Proyecto  Transgasan
 ## Desarrollo Aplicaciones Empresariales
 
-## Objetivos
+## Para usar:
+```node
+  npm install // Para instalar las dependecias y librerias 
+  npm start // Para comenzar el proyecto
+```
 
 ### Pre-requisitos 📋
+
 _Para usar el programa debes tener Nodejs npm_
 
 ```
