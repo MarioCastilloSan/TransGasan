@@ -1,6 +1,6 @@
 # transgasan_app
 
-A new Flutter project.
+Flutter project for the mobil app.
 
 ## Getting Started
 
