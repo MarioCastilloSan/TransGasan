@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../logo.svg'
+import Logo from '../../logo.png'
 import './header.css'
 
 const Header = () =>{
@@ -8,7 +8,7 @@ const Header = () =>{
       <img 
         src = {Logo}
         height={100} 
-        width = {100} 
+        width = {300} 
         alt= "Logo TransGasan"
         />
     </div>

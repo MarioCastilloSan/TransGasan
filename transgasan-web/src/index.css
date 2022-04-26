@@ -14,11 +14,7 @@ code {
 }
 
 body{
-  background: rgb(111,118,129);
-  background: -moz-linear-gradient(65deg, rgba(111,118,129,1) 0%, rgba(76,83,93,1) 48%, rgba(2,35,69,1) 100%);
-  background: -webkit-linear-gradient(65deg, rgba(111,118,129,1) 0%, rgba(76,83,93,1) 48%, rgba(2,35,69,1) 100%);
-  background: linear-gradient(65deg, rgba(111,118,129,1) 0%, rgba(76,83,93,1) 48%, rgba(2,35,69,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6f7681",endColorstr="#022345",GradientType=1);
+  background-color:white
 }
 
 .App{
