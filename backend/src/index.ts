@@ -1,22 +1,13 @@
+import { showUsers } from './controllers/user';
 import app from './app'
 import * as DBservices from './database';
 import morgan from 'morgan';
-import { RequestHandler } from 'express';
+import express from 'express';
 
-interface user{
-    idUser: number,
-    User:string,
-    password:string,
-    idType:number,
-    idProfile:number,
-}
+const router = express.Router();
+const data = showUsers();
 
 DBservices.connectMongo();
-DBservices.connectMySQL();
-const showUser = async () => {
-    return await DBservices.execute<user>('SELECT * FROM user', []);
-}
-console.log(showUser());
 
 
 app.listen(app.get('port'), ()=>{
