@@ -1,0 +1,4 @@
+npm WARN deprecated @types/express-handlebars@6.0.0: This is a stub types definition. express-handlebars provides its own type definitions, so you do not need this installed.
+npm WARN deprecated @types/dotenv@8.2.0: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
+npm WARN deprecated @types/mongoose@5.11.97: Mongoose publishes its own types, so you do not need to install this package.
+npm WARN deprecated @types/express-validator@3.0.0: This is a stub types definition for express-validator (https://github.com/ctavan/express-validator). express-validator provides its own type definitions, so you don't need @types/express-validator installed! 
