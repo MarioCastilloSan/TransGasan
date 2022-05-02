@@ -14,7 +14,6 @@ interface user{
 DBservices.connectMongo();
 DBservices.connectMySQL();
 const showUser = async () => {
-    await DBservices.execute<user>('use dbs6109599', []);
     return await DBservices.execute<user>('SELECT * FROM user', []);
 }
 console.log(showUser());
