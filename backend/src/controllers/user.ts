@@ -1,7 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
-import { ConnectMYSQL, Query } from './../database';
+import { ConnectMYSQL, Query } from '../config/database';
 
 
+/**
+ * It connects to the database, then queries the database, then returns the result of the query, then
+ * closes the connection.
+ */
 export const showUsers = async () => {
     let query = `SElECT * FROM user`;
 

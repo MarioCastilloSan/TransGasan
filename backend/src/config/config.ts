@@ -1,10 +1,12 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-//PORT APP EXPRESS
+
+/* Exporting the port number from the .env file. */
 export const PORT = { PORT: process.env.PORT };
 
-//Object mongoose
+
+/* Exporting the MongoDB configuration. */
 export const MONGODB = {
   MONGO_DB: process.env.MONGO_DB,
   MONGODB_HOST: process.env.MONGODB_HOST,
@@ -12,7 +14,8 @@ export const MONGODB = {
   MONGO_PASS: process.env.MONGO_PASS,
 };
 
-//object data mysql
+
+/* Exporting the MySQL configuration. */
 export const MYSQL = {
   DB_HOST: process.env.MY_SQL_DB_HOST,
   DB_USER: process.env.MY_SQL_DB_USER,
@@ -24,7 +27,8 @@ export const MYSQL = {
     : 4,
 };
 
-//config configuration mysql
+
+/* Exporting the configuration object. */
 export const configuration = {
   host: MYSQL.DB_HOST,
   user: MYSQL.DB_USER,

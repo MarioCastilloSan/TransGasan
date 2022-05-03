@@ -1,5 +1,5 @@
 import express from 'express';
-import { PORT } from './config'
+import { PORT } from './config/config'
 
 
 
