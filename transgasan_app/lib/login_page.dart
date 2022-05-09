@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:transgasan_app/startLogin.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -8,6 +9,29 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
+
+//class _State extends State<> with SingleTickerProviderStateMixin {
+  //late AnimationController _controller;
+
+ // @override
+  //void initState() {
+   // super.initState();
+    //_controller = AnimationController(vsync: this);
+ // }
+
+  //@override
+  //void dispose() {
+   // _controller.dispose();
+    //super.dispose();
+  //}
+
+ // @override
+  //Widget build(BuildContext context) {
+   // return Container();
+  //}
+//}
+
 
 class _LoginPageState extends State<LoginPage> {
   @override
@@ -92,7 +116,10 @@ class _LoginPageState extends State<LoginPage> {
 
           ),
 
-          onPressed: null,
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const startLogin()),
+            );
+          },
         );
       },
     );
