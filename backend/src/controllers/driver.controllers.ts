@@ -7,7 +7,6 @@ export const createDriver = async (
     res: Response, 
     next: NextFunction
 ) => {
-    console.log("Hola")
     try {
         const {name} = req.body;
 
