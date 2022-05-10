@@ -4,27 +4,6 @@ import { configuration } from "./config";
 
 import colors from "colors";
 
-/**
- * This function takes a mongoose connection, a collection name, and a query, and returns a promise of
- * an array of documents.
- * @param connection - mongoose.Connection - this is the connection to the database
- * @param {string} collection - string - The name of the collection you want to query
- * @param {any} query - any
- * @returns An array of objects.
- */
-export const getMongo = async (
-  connection: mongoose.Connection,
-  collection: string,
-  query: any
-): Promise<any> => {
-  try {
-    const data = await connection.collection(collection).find(query).toArray();
-    return data;
-  } catch (error) {
-    console.log(colors.red("MongoDB connection error: "), error);
-    process.exit(1);
-  }
-};
 
 /**
  * It creates a new connection to the database, and returns a promise that resolves to the connection
