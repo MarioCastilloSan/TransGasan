@@ -9,6 +9,8 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+//import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
+//import Dashboard from '../Dashboard/Dashboard';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+
 //state type
 
 type State = {
@@ -52,6 +55,8 @@ const initialState:State = {
   helperText: '',
   isError: false
 };
+
+
 
 type Action = { type: 'setUsername', payload: string }
   | { type: 'setPassword', payload: string }
@@ -127,8 +132,11 @@ const Login = () => {
       dispatch({
         type: 'loginSuccess',
         payload: 'Login Successfully'
+
       });
-    console.log(state)
+  
+    console.log(state);
+    window.location.href="http://localhost:3000/Dashboard";
 
     } else {
       dispatch({
@@ -169,7 +177,7 @@ const Login = () => {
       //console.log("state after: ",event.target.checked)
       }
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <form action="localhost:3000/Dashboard" className={classes.container} noValidate autoComplete="off">
       <Card className={classes.card}>
         <CardHeader className={classes.header} title="Login" />
         <CardContent>
@@ -214,8 +222,7 @@ const Login = () => {
             size="medium"
             color="secondary"
             className={classes.loginBtn}
-            onClick={handleLogin}
-            disabled={state.isButtonDisabled}>
+            onClick={handleLogin}>
             Login
           </Button>
         </CardActions>
