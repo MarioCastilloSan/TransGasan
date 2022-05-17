@@ -10,29 +10,6 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-
-//class _State extends State<> with SingleTickerProviderStateMixin {
-  //late AnimationController _controller;
-
- // @override
-  //void initState() {
-   // super.initState();
-    //_controller = AnimationController(vsync: this);
- // }
-
-  //@override
-  //void dispose() {
-   // _controller.dispose();
-    //super.dispose();
-  //}
-
- // @override
-  //Widget build(BuildContext context) {
-   // return Container();
-  //}
-//}
-
-
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
@@ -43,16 +20,23 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Flexible(
-                child: Image.asset('images/logo.png',
-                height: 380.0,),
+                child: Image.asset(
+                  'images/logo.png',
+                  height: 380.0,
+                ),
               ),
-              SizedBox(height: 15.0,),
+              SizedBox(
+                height: 15.0,
+              ),
               _userTextField(),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               _passwordTextField(),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               _buttonLogin(),
-
             ],
           ),
         ),
@@ -60,29 +44,28 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget  _userTextField() {
+  Widget _userTextField() {
     return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-            icon: Icon(Icons.email),
+              icon: Icon(Icons.email),
               hintText: 'ejemplousuario',
-                labelText: 'Tu Usuario',
+              labelText: 'Tu Usuario',
             ),
-            onChanged: (value){
-
-            },
+            onChanged: (value) {},
           ),
         );
       },
     );
- }
+  }
+
   Widget _passwordTextField() {
     return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
@@ -98,30 +81,28 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
- Widget _buttonLogin() {
+
+  Widget _buttonLogin() {
     return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         return ElevatedButton(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal:80.0, vertical : 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
             child: Text('Iniciar Sesion'),
           ),
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.grey),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)
-                )
-            )
-
-          ),
-
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> const startLogin()),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)))),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const startLogin()),
             );
           },
         );
       },
     );
- }
+  }
 }
