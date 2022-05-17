@@ -1,31 +1,26 @@
-import React from 'react';
-import Login from './components/login/Login';
-import Header from './components/header/Header';
-import Dashboard from './components/Dashboard/Dashboard'; 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useReducer } from "react";
+import { AppRouter } from "./app/router/AppRouter";
+import { AuthContext } from "./app/views/store/contexts/AuthContext";
+import { authReducer } from "./app/views/store/reducers/authReducer";
+import "./App.css";
 
-const App: React.FC = () => {
-  
+const init = () => {
+  let sessionUser: any = sessionStorage.getItem("user");
+  let user: any;
+  if (!sessionUser) {
+    user = sessionUser;
+  } else {
+    user = JSON.parse(sessionUser);
+  }
+  return user;
+};
+
+function App() {
+  const [user, dispatchUser] = useReducer(authReducer, {}, init);
   return (
-  <div className="App">
-    <BrowserRouter>
-      <Switch>
-        <Route path="/Login">
-          
-          <Login />
-    
-        </Route>
-
-        <Route path="/Dashboard">
-
-          <Dashboard />
-          
-        </Route>
-      </Switch>
-    </BrowserRouter>
-
-    
-  </div>
+    <AuthContext.Provider value={{ user, dispatchUser }}>
+      <AppRouter />
+    </AuthContext.Provider>
   );
 }
 
