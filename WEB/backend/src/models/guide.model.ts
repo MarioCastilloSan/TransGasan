@@ -1,5 +1,4 @@
 import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
-import { date } from "zod";
 
 @modelOptions({
   schemaOptions: {

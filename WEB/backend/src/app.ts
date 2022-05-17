@@ -1,4 +1,4 @@
-import express from "express";
+import express,{Response, Request} from "express";
 import { PORT } from "./config/config";
 import cors from "cors";
 import morgan from "morgan";
@@ -14,6 +14,16 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(mongoRoutes);
 
+app.get("/", (req: Request, res: Response) => {
+  res.json({
+      Name: "MongoDB API",
+      author: "TransGasan Team Dev",
+      description: "",
+      version: "1.0.0"
+  });
+});
+
+
 app.use((req, res, next) => {
   const error: any = new Error("Not found");
   error.status = 404;
@@ -28,6 +38,7 @@ app.use((error: any, req: any, res: any, next: any) => {
     },
   });
 })
+
 
 app.set("port", PORT.PORT);
 

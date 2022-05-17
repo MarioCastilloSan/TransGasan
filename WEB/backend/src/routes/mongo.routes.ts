@@ -2,6 +2,7 @@ import { CreateTrucksSchema } from './../schemas/trucks.schema';
 import { CreateGuidesSchema } from './../schemas/guides.schema';
 import { CreateDriverSchema } from './../schemas/driver.schema';
 import { Router } from "express";
+
 const router = Router();
 
 import {
@@ -60,6 +61,5 @@ router.get("/truck/:id", getTruck);
 router.delete("/truck/:id", deleteTruck);
 router.put("/truck/:id", updateTruck);
 router.post("/trucks", validateSchema(CreateTrucksSchema),createTruck);
-
 
 export default router;
