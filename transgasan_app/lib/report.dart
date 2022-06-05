@@ -3,9 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:transgasan_app/startLogin.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class report extends StatelessWidget {
+bool fuelCheck = false;
+bool oilCheck = false;
+bool greaseCheck = false;
+bool hydraCheck = false;
+String dateText= '';
+
+final guideCon = new TextEditingController();
+final driverCon = new TextEditingController();
+final obvsCon = new TextEditingController();
+final plateCon = new TextEditingController();
+final consCon = new TextEditingController();
+final inkmCon = new TextEditingController();
+final outkmCon = new TextEditingController();
+final lapsCon = new TextEditingController();
+final fuelMCon = new TextEditingController();
+final oilMCon = new TextEditingController();
+final greaseMCon = new TextEditingController();
+final hydraMCon = new TextEditingController();
+class report extends StatefulWidget {
   const report({Key? key}) : super(key: key);
 
+  @override
+  State<report> createState() => _reportState();
+}
+
+class _reportState extends State<report> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,6 +84,10 @@ class report extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
+              _checkbox(),
+              SizedBox(
+                height: 20.0,
+              ),
               _fuel(),
               SizedBox(
                 height: 20.0,
@@ -86,12 +113,18 @@ class report extends StatelessWidget {
   }
 }
 
+
+
+
+
+
 Widget _guideNumber() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: guideCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.web_rounded),
@@ -110,6 +143,7 @@ Widget _driverName() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: driverCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.account_circle),
@@ -128,6 +162,7 @@ Widget _observations() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller:obvsCon ,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.add_box),
@@ -147,6 +182,7 @@ Widget _licensePlate() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: plateCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.assignment),
@@ -165,6 +201,7 @@ Widget _conSite() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: consCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.wallet_travel),
@@ -195,11 +232,10 @@ Widget _date() {
           DatePicker.showDatePicker(context,
               showTitleActions: true,
               minTime: DateTime(2018, 3, 5),
-              maxTime: DateTime(2031, 6, 7), onChanged: (date) {
-            print('change $date');
-          }, onConfirm: (date) {
+              maxTime: DateTime(2031, 6, 7),onConfirm: (date) {
             print('confirm $date');
           }, currentTime: DateTime.now(), locale: LocaleType.es);
+          dateText=DateTime.now().toString();
         },
       );
     },
@@ -212,6 +248,7 @@ Widget _inKM() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: inkmCon,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             icon: Icon(Icons.wysiwyg),
@@ -230,6 +267,7 @@ Widget _outKM() {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: outkmCon,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             icon: Icon(Icons.wysiwyg),
@@ -246,8 +284,10 @@ Widget _activity() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
+
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: lapsCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.add_box_rounded),
@@ -260,40 +300,47 @@ Widget _activity() {
   );
 }
 
-Widget _fuel() {
-  bool isChecked = false;
-  return StreamBuilder(
-    builder: (BuildContext context, AsyncSnapshot snapshot) {
-      return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: TextField(
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            icon: Icon(Icons.add_box_sharp),
-            hintText: 'Combustible cargado',
-            labelText:
-                'Ingresar el combustible cargado en el dia en caso de realizarse',
-          ),
-        ),
-      );
-      return Checkbox(
-        checkColor: Colors.white,
-        value: isChecked,
-        onChanged: (bool? value) {
-          isChecked = value!;
-        },
-      );
-    },
-  );
+
+class _fuel extends StatefulWidget {
+  const _fuel({Key? key}) : super(key: key);
+
+  @override
+  State<_fuel> createState() => _fuelState();
 }
 
+class _fuelState extends State<_fuel> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            controller:fuelMCon,
+            enabled: fuelCheck,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              icon: Icon(Icons.add_box_sharp),
+              hintText: 'Combustible cargado',
+              labelText:
+              'Ingresar el combustible cargado en el dia en caso de realizarse',
+            ),
+          ),
+
+        );
+      },
+    );
+  }
+}
+
+
 Widget _oilM() {
-  bool isChecked = false;
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller:oilMCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.add_box_sharp),
@@ -302,24 +349,17 @@ Widget _oilM() {
           ),
         ),
       );
-      return Checkbox(
-        checkColor: Colors.white,
-        value: isChecked,
-        onChanged: (bool? value) {
-          isChecked = value!;
-        },
-      );
     },
   );
 }
 
 Widget _greaseM() {
-  bool isChecked = false;
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller: greaseMCon,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.add_box_sharp),
@@ -328,24 +368,18 @@ Widget _greaseM() {
           ),
         ),
       );
-      return Checkbox(
-        checkColor: Colors.white,
-        value: isChecked,
-        onChanged: (bool? value) {
-          isChecked = value!;
-        },
-      );
     },
   );
 }
 
 Widget _hydraulicM() {
-  bool isChecked = false;
+
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
+          controller:hydraMCon ,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             icon: Icon(Icons.add_box_sharp),
@@ -353,13 +387,6 @@ Widget _hydraulicM() {
             labelText: 'Ingresar si se realizo una mantencion hidraulica',
           ),
         ),
-      );
-      return Checkbox(
-        checkColor: Colors.white,
-        value: isChecked,
-        onChanged: (bool? value) {
-          isChecked = value!;
-        },
       );
     },
   );
@@ -379,6 +406,7 @@ Widget _buttonClose() {
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)))),
         onPressed: () {
+          print(dataToJson());
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const startLogin()),
@@ -388,3 +416,40 @@ Widget _buttonClose() {
     },
   );
 }
+String dataToJson(){
+
+  var data='{"number":'+guideCon.text+', "name":'+driverCon.text+',"licensePlate":'+plateCon.text+',"conSite":'+consCon.text+',"date":'+dateText+',"inKm":'+inkmCon.text+',"outKm":'+outkmCon.text+',"activity":'+lapsCon.text+',"fuel":'+fuelMCon.text+',"oilM":'+oilMCon.text+',"greaseM":'+greaseMCon.text+',"hydraulicM":'+hydraMCon.text+',"observation":'+obvsCon.text+'}';
+
+  return data;
+
+}
+class _checkbox extends StatefulWidget {
+  const _checkbox({Key? key}) : super(key: key);
+
+  @override
+  State<_checkbox> createState() => _checkboxState();
+}
+
+class _checkboxState extends State<_checkbox> {
+
+
+  @override
+  Widget build(BuildContext context) {
+
+
+    return CheckboxListTile(
+      title: Text('¿Se realizo una carga de combustible?'),
+      checkColor: Colors.white,
+      value: fuelCheck,
+      onChanged: (bool? value) {
+        setState(() {
+          fuelCheck = value!;
+          _fuelState().activate();
+        });
+      },
+
+    );
+  }
+}
+
+
