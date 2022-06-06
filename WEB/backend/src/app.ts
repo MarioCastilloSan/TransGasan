@@ -2,7 +2,6 @@ import express,{Response, Request} from "express";
 import { PORT } from "./config/config";
 import cors from "cors";
 import morgan from "morgan";
-
 import mongoRoutes from "./routes/mongo.routes";
 
 const app = express();
@@ -22,7 +21,6 @@ app.get("/", (req: Request, res: Response) => {
       version: "1.0.0"
   });
 });
-
 
 app.use((req, res, next) => {
   const error: any = new Error("Not found");
