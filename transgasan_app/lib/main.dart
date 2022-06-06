@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:transgasan_app/login_page.dart';
+import 'package:transgasan_app/components/singin.dart';
+// ignore: unused_import
 import 'package:cupertino_icons/cupertino_icons.dart';
 
 void main() {
@@ -9,16 +10,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Demo',
+      title: 'TransGasan Enterprise',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute:LoginPage.id ,
+      initialRoute: Singin.id,
       routes: {
-        LoginPage.id :(context) => LoginPage(),
+        Singin.id: (context) => const Singin(),
       },
     );
   }

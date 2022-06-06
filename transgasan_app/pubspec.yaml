@@ -27,6 +27,7 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   # DateTimeFormat
   intl: ^0.16.0
+  dio: ^4.0.6
 
 
 dev_dependencies:

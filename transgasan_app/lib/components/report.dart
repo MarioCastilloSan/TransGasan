@@ -1,26 +1,30 @@
+// ignore: unnecessary_import
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:transgasan_app/startLogin.dart';
+import 'package:transgasan_app/components/dashboard.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 bool fuelCheck = false;
 bool oilCheck = false;
 bool greaseCheck = false;
 bool hydraCheck = false;
-String dateText= '';
+String dateText = '';
 
+// ignore: unnecessary_new
 final guideCon = new TextEditingController();
-final driverCon = new TextEditingController();
-final obvsCon = new TextEditingController();
-final plateCon = new TextEditingController();
-final consCon = new TextEditingController();
-final inkmCon = new TextEditingController();
-final outkmCon = new TextEditingController();
-final lapsCon = new TextEditingController();
-final fuelMCon = new TextEditingController();
-final oilMCon = new TextEditingController();
-final greaseMCon = new TextEditingController();
-final hydraMCon = new TextEditingController();
+final driverCon = TextEditingController();
+final obvsCon = TextEditingController();
+final plateCon = TextEditingController();
+final consCon = TextEditingController();
+final inkmCon = TextEditingController();
+final outkmCon = TextEditingController();
+final lapsCon = TextEditingController();
+final fuelMCon = TextEditingController();
+final oilMCon = TextEditingController();
+final greaseMCon = TextEditingController();
+final hydraMCon = TextEditingController();
+
+// ignore: camel_case_types
 class report extends StatefulWidget {
   const report({Key? key}) : super(key: key);
 
@@ -28,6 +32,7 @@ class report extends StatefulWidget {
   State<report> createState() => _reportState();
 }
 
+// ignore: camel_case_types
 class _reportState extends State<report> {
   @override
   Widget build(BuildContext context) {
@@ -45,63 +50,63 @@ class _reportState extends State<report> {
                   height: 380.0,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _guideNumber(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _driverName(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _observations(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _licensePlate(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _conSite(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _date(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _inKM(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _outKM(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _activity(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
-              _checkbox(),
-              SizedBox(
+              const _checkbox(),
+              const SizedBox(
                 height: 20.0,
               ),
-              _fuel(),
-              SizedBox(
+              const _fuel(),
+              const SizedBox(
                 height: 20.0,
               ),
               _oilM(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _greaseM(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _hydraulicM(),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               _buttonClose(),
@@ -113,20 +118,15 @@ class _reportState extends State<report> {
   }
 }
 
-
-
-
-
-
 Widget _guideNumber() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: guideCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.web_rounded),
             hintText: 'Numero de la guia',
             labelText: 'Numero de la guia',
@@ -141,11 +141,11 @@ Widget _driverName() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: driverCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.account_circle),
             hintText: 'Conductor del camion',
             labelText: 'Este dato se autocompleta desde la bd',
@@ -160,11 +160,11 @@ Widget _observations() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
-          controller:obvsCon ,
+          controller: obvsCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.add_box),
             hintText: 'Observaciones del dia',
             labelText:
@@ -180,11 +180,11 @@ Widget _licensePlate() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: plateCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.assignment),
             hintText: 'Patente del Camión',
             labelText: 'Este dato se autocompleta desde la bd',
@@ -199,11 +199,11 @@ Widget _conSite() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: consCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.wallet_travel),
             hintText: 'Nombre del pozo actual',
             labelText: 'Ingrese el nombre del Pozo',
@@ -215,13 +215,14 @@ Widget _conSite() {
 }
 
 Widget _date() {
+  // ignore: unused_local_variable
   DateTime selectedDate = DateTime.now();
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return ElevatedButton(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: Text('Ingrese la fecha '),
+          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+          child: const Text('Ingrese la fecha '),
         ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -232,10 +233,10 @@ Widget _date() {
           DatePicker.showDatePicker(context,
               showTitleActions: true,
               minTime: DateTime(2018, 3, 5),
-              maxTime: DateTime(2031, 6, 7),onConfirm: (date) {
-            print('confirm $date');
+              maxTime: DateTime(2031, 6, 7), onConfirm: (date) {
+            // print('confirm $date');
           }, currentTime: DateTime.now(), locale: LocaleType.es);
-          dateText=DateTime.now().toString();
+          dateText = DateTime.now().toString();
         },
       );
     },
@@ -246,11 +247,11 @@ Widget _inKM() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: inkmCon,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.wysiwyg),
             hintText: 'El kilometraje inicial',
             labelText: 'Ingrese el kilometraje inicial',
@@ -265,11 +266,11 @@ Widget _outKM() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: outkmCon,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.wysiwyg),
             hintText: 'El kilometraje final',
             labelText: 'Ingrese el kilometraje final',
@@ -284,12 +285,11 @@ Widget _activity() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: lapsCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.add_box_rounded),
             hintText: 'Vueltas del dia',
             labelText: 'Vueltas realizadas',
@@ -300,7 +300,7 @@ Widget _activity() {
   );
 }
 
-
+// ignore: camel_case_types
 class _fuel extends StatefulWidget {
   const _fuel({Key? key}) : super(key: key);
 
@@ -308,41 +308,40 @@ class _fuel extends StatefulWidget {
   State<_fuel> createState() => _fuelState();
 }
 
+// ignore: camel_case_types
 class _fuelState extends State<_fuel> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
-            controller:fuelMCon,
+            controller: fuelMCon,
             enabled: fuelCheck,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               icon: Icon(Icons.add_box_sharp),
               hintText: 'Combustible cargado',
               labelText:
-              'Ingresar el combustible cargado en el dia en caso de realizarse',
+                  'Ingresar el combustible cargado en el dia en caso de realizarse',
             ),
           ),
-
         );
       },
     );
   }
 }
 
-
 Widget _oilM() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
-          controller:oilMCon,
+          controller: oilMCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.add_box_sharp),
             hintText: 'Mantencion de Aceite ',
             labelText: 'Ingresar si se realizo una mantencion de aceite',
@@ -357,11 +356,11 @@ Widget _greaseM() {
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           controller: greaseMCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.add_box_sharp),
             hintText: 'Mantencion de Aceite ',
             labelText: 'Ingresar si se realizo una mantencion de engrasado',
@@ -373,15 +372,14 @@ Widget _greaseM() {
 }
 
 Widget _hydraulicM() {
-
   return StreamBuilder(
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
-          controller:hydraMCon ,
+          controller: hydraMCon,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             icon: Icon(Icons.add_box_sharp),
             hintText: 'Mantencion Hidraulica ',
             labelText: 'Ingresar si se realizo una mantencion hidraulica',
@@ -397,8 +395,8 @@ Widget _buttonClose() {
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return ElevatedButton(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-          child: Text('Enviar Reporte'),
+          padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+          child: const Text('Enviar Reporte'),
         ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -406,7 +404,7 @@ Widget _buttonClose() {
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)))),
         onPressed: () {
-          print(dataToJson());
+          // print(dataToJson());
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const startLogin()),
@@ -416,13 +414,40 @@ Widget _buttonClose() {
     },
   );
 }
-String dataToJson(){
 
-  var data='{"number":'+guideCon.text+', "name":'+driverCon.text+',"licensePlate":'+plateCon.text+',"conSite":'+consCon.text+',"date":'+dateText+',"inKm":'+inkmCon.text+',"outKm":'+outkmCon.text+',"activity":'+lapsCon.text+',"fuel":'+fuelMCon.text+',"oilM":'+oilMCon.text+',"greaseM":'+greaseMCon.text+',"hydraulicM":'+hydraMCon.text+',"observation":'+obvsCon.text+'}';
+String dataToJson() {
+  var data = '{"number":' +
+      guideCon.text +
+      ', "name":' +
+      driverCon.text +
+      ',"licensePlate":' +
+      plateCon.text +
+      ',"conSite":' +
+      consCon.text +
+      ',"date":' +
+      dateText +
+      ',"inKm":' +
+      inkmCon.text +
+      ',"outKm":' +
+      outkmCon.text +
+      ',"activity":' +
+      lapsCon.text +
+      ',"fuel":' +
+      fuelMCon.text +
+      ',"oilM":' +
+      oilMCon.text +
+      ',"greaseM":' +
+      greaseMCon.text +
+      ',"hydraulicM":' +
+      hydraMCon.text +
+      ',"observation":' +
+      obvsCon.text +
+      '}';
 
   return data;
-
 }
+
+// ignore: camel_case_types
 class _checkbox extends StatefulWidget {
   const _checkbox({Key? key}) : super(key: key);
 
@@ -430,15 +455,12 @@ class _checkbox extends StatefulWidget {
   State<_checkbox> createState() => _checkboxState();
 }
 
+// ignore: camel_case_types
 class _checkboxState extends State<_checkbox> {
-
-
   @override
   Widget build(BuildContext context) {
-
-
     return CheckboxListTile(
-      title: Text('¿Se realizo una carga de combustible?'),
+      title: const Text('¿Se realizo una carga de combustible?'),
       checkColor: Colors.white,
       value: fuelCheck,
       onChanged: (bool? value) {
@@ -447,9 +469,6 @@ class _checkboxState extends State<_checkbox> {
           _fuelState().activate();
         });
       },
-
     );
   }
 }
-
-

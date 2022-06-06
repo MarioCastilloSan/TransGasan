@@ -3,6 +3,7 @@ import { PORT } from "./config/config";
 import cors from "cors";
 import morgan from "morgan";
 import mongoRoutes from "./routes/mongo.routes";
+import userRoutes from "./routes/user.routes";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(mongoRoutes);
+app.use(userRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.json({
