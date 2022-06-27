@@ -28,6 +28,9 @@ dependencies:
   # DateTimeFormat
   intl: ^0.16.0
   dio: ^4.0.6
+  hexcolor: ^2.0.4
+  font_awesome_flutter: ^9.1.0
+  otp_text_field: ^1.1.1
 
 
 dev_dependencies:

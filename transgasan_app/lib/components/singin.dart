@@ -3,6 +3,7 @@ import 'package:transgasan_app/components/dashboard.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:dio/dio.dart';
 
+import '../common/theme_helper.dart';
 import '../models/user.dart';
 
 class Singin extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SinginState extends State<Singin> {
 
   Future submit() async {
     BaseOptions options = BaseOptions(
-      baseUrl: "http://192.168.1.18:3000",
+      baseUrl: "http://192.168.1.10:3000",
       connectTimeout: 3000,
       receiveTimeout: 3000,
     );
@@ -35,7 +36,7 @@ class _SinginState extends State<Singin> {
         print(response.data);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const startLogin()),
+          MaterialPageRoute(builder: (context) => const ProfilePage()),
         );
       } else if (response.statusCode == 401) {
         // ignore: avoid_print
@@ -77,7 +78,30 @@ class _SinginState extends State<Singin> {
               const SizedBox(
                 height: 20.0,
               ),
-              _buttonLogin(),
+              Container(
+                decoration: ThemeHelper().buttonBoxDecoration(context),
+                child: ElevatedButton(
+                  style: ThemeHelper().buttonStyle(),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                    child: Text(
+                      'Sign In'.toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      submit();
+                    } else {
+                      // ignore: avoid_print
+                      print('error');
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -147,33 +171,6 @@ class _SinginState extends State<Singin> {
               ),
             ),
           ),
-        );
-      },
-    );
-  }
-
-  Widget _buttonLogin() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return ElevatedButton(
-          child: Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Iniciar Sesion'),
-          ),
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.grey),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)))),
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              submit();
-            } else {
-              // ignore: avoid_print
-              print('error');
-            }
-          },
         );
       },
     );
