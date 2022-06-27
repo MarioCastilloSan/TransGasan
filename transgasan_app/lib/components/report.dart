@@ -3,6 +3,8 @@ import 'package:transgasan_app/common/theme_helper.dart';
 import 'package:transgasan_app/pages/widgets/header_widget.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'dashboard.dart';
+import '../models/report.dart';
+import 'package:dio/dio.dart';
 
 String dateText = '';
 
@@ -23,6 +25,53 @@ class _reportPageState extends State<report> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+  ReportData reportdata =
+      ReportData('', '', '', '', '', '', '', '', '', '', '', '', '');
+  Future submit() async {
+    BaseOptions options = BaseOptions(
+      baseUrl: "http://192.168.1.10:3000",
+      connectTimeout: 3000,
+      receiveTimeout: 3000,
+    );
+    print(reportdata.printData());
+    // print(reportdata.);
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+    // print(reportdata.toString());
+
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const ProfilePage()),
+        (Route<dynamic> route) => false);
+
+    // Dio dio = Dio(options);
+    // dio.options.headers['content-Type'] = 'application/json;charSet=UTF-8';
+    // try {
+    //   var response = await dio.post("/guide", data: {reportdata});
+
+    //   if (response.statusCode == 200) {
+    //     // ignore: avoid_print
+    //     print(response.data);
+    //     Navigator.of(context).pushAndRemoveUntil(
+    //         MaterialPageRoute(builder: (context) => const ProfilePage()),
+    //         (Route<dynamic> route) => false);
+    //   } else if (response.statusCode == 401) {
+    //     // ignore: avoid_print
+    //     print(response.statusCode);
+    //   }
+    // } catch (e) {
+    //   // ignore: avoid_print
+    //   print(e);
+    //   throw ('Error en el POST');
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +131,9 @@ class _reportPageState extends State<report> {
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 'Numero de la guia', 'Numero de la guia'),
+                            onChanged: (valueGuia) {
+                              reportdata.numberGuide = valueGuia;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -93,6 +145,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 'Este dato se autocompleta desde la bd',
                                 'Conductor del camion'),
+                            onChanged: (valueDrive) {
+                              reportdata.driverName = valueDrive;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -102,6 +157,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Se ingresa los datos considerados pertinentes, engrasado,cargado de combustible etc.",
                                 "Observaciones del dia"),
+                            onChanged: (valueO) {
+                              reportdata.observations = valueO;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -111,6 +169,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Este dato se autocompleta desde la bd",
                                 "Patente del Camión"),
+                            onChanged: (valueLisence) {
+                              reportdata.linsencePlate = valueLisence;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -120,17 +181,23 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Ingrese el nombre del Pozo",
                                 "Nombre del pozo actual"),
+                            onChanged: (valueTruck) {
+                              reportdata.nameTruck = valueTruck;
+                            },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         const SizedBox(height: 20.0),
-                        _date(),
+                        _date(reportdata),
                         const SizedBox(height: 20.0),
                         Container(
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 "Ingrese el kilometraje inicial",
                                 "El kilometraje inicial"),
+                            onChanged: (valueKm) {
+                              reportdata.inKm = valueKm;
+                            },
                             keyboardType: TextInputType.number,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -141,6 +208,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Ingrese el kilometraje final",
                                 "El kilometraje final"),
+                            onChanged: (valueKm) {
+                              reportdata.outKm = valueKm;
+                            },
                             keyboardType: TextInputType.number,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -150,6 +220,9 @@ class _reportPageState extends State<report> {
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 "Vueltas realizadas", "Vueltas del dia"),
+                            onChanged: (valueLaps) {
+                              reportdata.laps = valueLaps;
+                            },
                             keyboardType: TextInputType.number,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -171,7 +244,7 @@ class _reportPageState extends State<report> {
                                           });
                                         }),
                                     const Text(
-                                      "¿Se realizo una carga de combustible?",
+                                      "¿Se realizó mantención?",
                                       style: TextStyle(color: Colors.grey),
                                     ),
                                   ],
@@ -192,7 +265,7 @@ class _reportPageState extends State<report> {
                           },
                           validator: (value) {
                             if (!checkboxValue) {
-                              return 'No has realizado carga?';
+                              return null;
                             } else {
                               return null;
                             }
@@ -204,6 +277,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Combustible cargado",
                                 "Ingresar el combustible cargado en el dia en caso de realizarse"),
+                            onChanged: (valueFuel) {
+                              reportdata.fuel = valueFuel;
+                            },
                             keyboardType: TextInputType.number,
                             enabled: fuelCheck,
                           ),
@@ -215,6 +291,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Mantencion de Aceite",
                                 "Ingresar si se realizo una mantencion de aceite"),
+                            onChanged: (valueOil) {
+                              reportdata.oilM = valueOil;
+                            },
                             enabled: fuelCheck,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -225,6 +304,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Mantencion de Engrasado",
                                 "Ingresar si se realizo una mantencion de engrasado"),
+                            onChanged: (valueGrase) {
+                              reportdata.graseM = valueGrase;
+                            },
                             enabled: fuelCheck,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -235,6 +317,9 @@ class _reportPageState extends State<report> {
                             decoration: ThemeHelper().textInputDecoration(
                                 "Mantencion Hidraulica",
                                 "Ingresar si se realizo una mantencion hidraulica"),
+                            onChanged: (valueHyd) {
+                              reportdata.hydraulicM = valueHyd;
+                            },
                             enabled: fuelCheck,
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -258,11 +343,7 @@ class _reportPageState extends State<report> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ProfilePage()),
-                                    (Route<dynamic> route) => false);
+                                submit();
                               }
                             },
                           ),
@@ -280,7 +361,7 @@ class _reportPageState extends State<report> {
   }
 }
 
-Widget _date() {
+Widget _date(reportdata) {
   // ignore: unused_local_variable
   DateTime selectedDate = DateTime.now();
   return StreamBuilder(
@@ -300,7 +381,8 @@ Widget _date() {
               showTitleActions: true,
               minTime: DateTime(2018, 3, 5),
               maxTime: DateTime(2031, 6, 7), onConfirm: (date) {
-            // print('confirm $date');
+            reportdata.date = date.toString();
+            // print(reportdata.date);
           }, currentTime: DateTime.now(), locale: LocaleType.es);
           dateText = DateTime.now().toString();
         },
